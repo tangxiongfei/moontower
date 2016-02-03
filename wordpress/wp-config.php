@@ -29,7 +29,7 @@ define('DB_USER', 'wordp');
 define('DB_PASSWORD', 'qwe123!1');
 
 /** MySQL主机 */
-define('DB_HOST', '112.74.211.158');
+define('DB_HOST', '127.0.0.1');
 
 /** 创建数据表时默认的文字编码 */
 define('DB_CHARSET', 'utf8mb4');

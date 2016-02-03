@@ -1,0 +1,12 @@
+.DS_Store
+**/*/.DS_Store
+.buildpath
+.project
+.settings
+wordpress/wp-config.php
+*.log
+*.orig
+*.pyc
+*.sublime-project
+*.sublime-workspace
+.idea/
