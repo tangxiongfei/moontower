@@ -55,7 +55,7 @@ function featured_post_class( $class = '', $post_id = null ) {
  * function tied to the excerpt_length filter hook.
  */
 function athemes_excerpt_length( $length ) {
-	return 40;
+	return 100;
 }
 add_filter( 'excerpt_length', 'athemes_excerpt_length' );
 

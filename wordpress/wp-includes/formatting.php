@@ -2912,7 +2912,8 @@ function wp_trim_excerpt( $text = '' ) {
 		 *
 		 * @param int $number The number of words. Default 55.
 		 */
-		$excerpt_length = apply_filters( 'excerpt_length', 55 );
+		$excerpt_length = apply_filters( 'excerpt_length', 55 , 3 );
+
 		/**
 		 * Filter the string in the "more" link displayed after a trimmed excerpt.
 		 *
@@ -2921,6 +2922,13 @@ function wp_trim_excerpt( $text = '' ) {
 		 * @param string $more_string The string shown within the more link.
 		 */
 		$excerpt_more = apply_filters( 'excerpt_more', ' ' . '[&hellip;]' );
+
+//        d($text);exit;
+
+        @preg_match("/<desc-default>(.*)<\/desc-default>/s", $text, $desc);;
+        if ($desc) {
+            $text = $desc;
+        }
 		$text = wp_trim_words( $text, $excerpt_length, $excerpt_more );
 	}
 	/**

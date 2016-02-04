@@ -200,6 +200,8 @@ function apply_filters( $tag, $value ) {
 	global $wp_filter, $merged_filters, $wp_current_filter;
 
 	$args = array();
+	$args1 = func_get_args();
+
 
 	// Do 'all' actions first.
 	if ( isset($wp_filter['all']) ) {
@@ -228,14 +230,34 @@ function apply_filters( $tag, $value ) {
 	if ( empty($args) )
 		$args = func_get_args();
 
+
+    if (isset($args1[2]) && $args1[2] === 1 && $args1[0] === 'the_excerpt') {
+        // d($args1);exit;
+    }
+
+
 	do {
 		foreach ( (array) current($wp_filter[$tag]) as $the_ )
 			if ( !is_null($the_['function']) ){
-				$args[1] = $value;
+
+                $args[1] = $value;
 				$value = call_user_func_array($the_['function'], array_slice($args, 1, (int) $the_['accepted_args']));
+
+                if (isset($args1[2]) && $args1[2]===3 && $args1[0] == "excerpt_length") {
+//                    d($the_);exit;
+//                    d($value);exit;
+                }
+
+                if (isset($args1[2]) && $args1[2] === 2 && $args1[0] === 'get_the_excerpt') {
+                    d($value);exit;
+                }
+
+
 			}
 
 	} while ( next($wp_filter[$tag]) !== false );
+
+
 
 	array_pop( $wp_current_filter );
 

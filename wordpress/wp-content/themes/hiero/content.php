@@ -29,7 +29,7 @@
 
 	<?php if ( ( is_search() && get_theme_mod('athemes_search_excerpt') =='' ) || ( is_home() && get_theme_mod('athemes_home_excerpt') =='' ) || ( is_archive() && get_theme_mod('athemes_arch_excerpt') =='' ) ) : ?>
 		<div class="entry-summary">
-			<?php the_excerpt(); ?>
+			<?php the_excerpt(1); ?>
 		<!-- .entry-summary --></div>
 	<?php else : ?>
 		<div class="clearfix entry-content">

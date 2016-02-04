@@ -329,7 +329,7 @@ function _convert_urlencoded_to_entities( $match ) {
  *
  * @since 0.71
  */
-function the_excerpt() {
+function the_excerpt($debug=0) {
 
 	/**
 	 * Filter the displayed post excerpt.
@@ -352,6 +352,8 @@ function the_excerpt() {
  * @return string
  */
 function get_the_excerpt( $deprecated = '' ) {
+    $args = func_get_args();
+
 	if ( !empty( $deprecated ) )
 		_deprecated_argument( __FUNCTION__, '2.3' );
 
@@ -371,7 +373,13 @@ function get_the_excerpt( $deprecated = '' ) {
 	 *
 	 * @param string $post_excerpt The post excerpt.
 	 */
-	return apply_filters( 'get_the_excerpt', $post->post_excerpt );
+    $debug = 0;
+    if (isset($args[1]) && $args[1] ===1) {
+//        d($post->post_excerpt);exit;
+        $debug = 2;
+    }
+
+	return apply_filters( 'get_the_excerpt', $post->post_excerpt ,$debug);
 }
 
 /**
