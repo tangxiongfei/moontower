@@ -2925,10 +2925,10 @@ function wp_trim_excerpt( $text = '' ) {
 
 //        d($text);exit;
 
-        @preg_match("/<desc-default>(.*)<\/>/s", $text, $desc);;
-        if ($desc) {desc-default
-            $text = $desc;
+        if (preg_match("/<desc-default>(.+)<\/desc-default>/s", $text, $desc)) {
+            $text = $desc[1];
         }
+
 		$text = wp_trim_words( $text, $excerpt_length, $excerpt_more );
 	}
 	/**
